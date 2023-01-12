@@ -9,7 +9,7 @@ export default {
     data() {
         return {
             todoList: [],
-            newElem: ''
+            newElem: '',
         }
     },
     methods: {
@@ -53,7 +53,9 @@ export default {
 
     <ul>
         <li v-for="(list, index) in todoList" :key="index">
-            {{ list.subject }}
+            <div :class="{ completed: list.completed }" @click="list.completed = !list.completed">
+                {{ list.subject }}
+            </div>
         </li>
     </ul>
 
@@ -66,5 +68,9 @@ export default {
 <style lang="scss" scoped>
 h1 {
     color: red;
+}
+
+.completed {
+    text-decoration: line-through;
 }
 </style>
