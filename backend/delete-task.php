@@ -10,7 +10,9 @@
 
     $todoList = json_decode($jsonTodoList);
 
-    array_splice($todoList, 0, 1);
+    foreach($todoList as $key => $value) {
+        array_splice($todoList, $key, 1);
+    }
 
     $jsonTodoList = json_encode($todoList);
 
