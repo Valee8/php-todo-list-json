@@ -24,7 +24,7 @@ export default {
 
             this.newElem = "";
 
-            axios.get(urlApi + "api-create-todo.php", params)
+            axios.get(urlApi + "add-task.php", params)
 
                 .then(() => {
 
