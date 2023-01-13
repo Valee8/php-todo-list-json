@@ -38,6 +38,10 @@ export default {
                     console.log(this.todoList);
 
                 });
+        },
+        deleteTask() {
+
+            axios.get(urlApi + "delete-task.php");
         }
     },
     mounted() {
@@ -53,8 +57,14 @@ export default {
 
     <ul>
         <li v-for="(list, index) in todoList" :key="index">
-            <div :class="{ completed: list.completed }" @click="list.completed = !list.completed">
+            <div>
                 {{ list.subject }}
+
+                <span @click="deleteTask">
+                    <a href="">
+                        Elimina
+                    </a>
+                </span>
             </div>
         </li>
     </ul>
@@ -68,9 +78,5 @@ export default {
 <style lang="scss" scoped>
 h1 {
     color: red;
-}
-
-.completed {
-    text-decoration: line-through;
 }
 </style>
