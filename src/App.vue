@@ -11,9 +11,11 @@ export default {
 </script>
 
 <template>
-  <TodoList />
+  <div class="container">
+    <TodoList />
+  </div>
 </template>
 
 <style lang="scss">
-
+@use '../src/styles/general.scss' as *;
 </style>
