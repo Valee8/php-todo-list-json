@@ -13,7 +13,7 @@ export default {
         }
     },
     methods: {
-        formSubmit(e) {
+        addTask(e) {
             e.preventDefault();
 
             const params = {
@@ -71,7 +71,7 @@ export default {
         </li>
     </ul>
 
-    <form @submit="formSubmit" class="form-todo">
+    <form @submit="addTask" class="form-todo">
         <input type="text" name="newElem" placeholder="Inserisci elemento..." v-model="newElem" class="input-text">
         <input type="submit" value="Inserisci" class="input-button">
     </form>
