@@ -6,14 +6,14 @@
 
     header('Content-Type: application/json');
 
-    $jsonTodoList = file_get_contents("todo.json");
+    $jsonTodoList = file_get_contents("todo.json", $index);
 
-    $todoList = json_decode($jsonTodoList);
+    $todoList = json_decode($jsonTodoList); 
 
-    foreach($todoList as $key => $value) {
-        array_splice($todoList, $key, 1);
-    }
+    $index = $_GET['index'];
 
-    $jsonTodoList = json_encode($todoList);
+    unset($todoList[$index]);
+
+    $jsonTodoList = json_encode(array_values($todoList));
 
     file_put_contents("todo.json", $jsonTodoList);

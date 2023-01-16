@@ -41,9 +41,9 @@ export default {
 
                 });
         },
-        deleteTask() {
+        deleteTask(index) {
 
-            axios.get(urlApi + "delete-task.php");
+            axios.get(urlApi + "delete-task.php", { params: { index } });
         }
     },
     mounted() {
@@ -59,15 +59,16 @@ export default {
 
     <ul>
         <li v-for="(list, index) in todoList" :key="index">
-            <div>
+            <span :class="list.completed ? 'completed' : 'not-completed'"
+                @click="changeStatusTask(list.completed, index)">
                 {{ list.subject }}
+            </span>
 
-                <span @click="deleteTask">
-                    <a href="">
-                        Elimina
-                    </a>
-                </span>
-            </div>
+            <span @click="deleteTask(index)">
+                <a href="">
+                    Elimina
+                </a>
+            </span>
         </li>
     </ul>
 
@@ -80,5 +81,13 @@ export default {
 <style lang="scss" scoped>
 h1 {
     color: red;
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+.not-completed {
+    text-decoration: none;
 }
 </style>
